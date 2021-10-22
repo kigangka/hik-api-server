@@ -1,0 +1,28 @@
+server:
+  port: 7788
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: org.postgresql.Driver
+      username: ${HIK_DEV_PGSQL_USERNAME}
+      password: ${HIK_DEV_PGSQL_PWD}
+      url: jdbc:postgresql://${HIK_DEV_PGSQL_HOST}:5432/hik?zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&stringtype=unspecified
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+      filter:
+        stat:
+          enabled: true
+          log-slow-sql: true
+          slow-sql-millis: 10000
+          merge-sql: true
+swagger:
+  enable: true
+
+ArtemisConfig:
+  host: ${HIK_DEV_HIK_HOST}
+  app_key: ${HIK_DEV_HIK_KEY}
+  app_secret: ${HIK_DEV_HIK_SECRET}
+
